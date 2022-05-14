@@ -5,8 +5,9 @@ const sequelize = require('./config/connection');
 // make css file available to client
 const path = require('path');
 // set up handlebars.js
+const helpers = require('./utils/helpers');
 const exphbs = require('express-handlebars');
-const hbs = exphbs.create({});
+const hbs = exphbs.create({ helpers });
 
 const app = express();
 const PORT = process.env.PORT || 3001;

@@ -14,21 +14,6 @@ Post.belongsTo(User, {
     foreignKey: 'user_id',
 });
 
-// voter many to many relationship
-// see which users voted on a single post
-User.belongsToMany(Post, {
-    through: Vote,
-    as: 'voted_posts',
-    foreignKey: 'user_id'
-});
-
-// see which posts a single user voted on
-Post.belongsToMany(User, {
-    through: Vote,
-    as: 'voted_posts',
-    foreignKey: 'post_id'
-});
-
 // comments belong to a particular user
 Comment.belongsTo(User, {
     foreignKey: 'user_id'
