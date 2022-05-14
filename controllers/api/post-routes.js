@@ -10,10 +10,9 @@ router.get('/', (req, res) => {
         order: [['created_at', 'DESC']],
         //query config
         attributes: ['id',
-        'post_url',
+        'post_content',
         'title',
-        'created_at',
-        [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
+        'created_at'
         ],
         include: [
             {
@@ -44,10 +43,9 @@ router.get('/:id', (req, res) => {
             id: req.params.id
         },
         attributes: ['id',
-            'post_url',
+            'post_content',
             'title',
-            'created_at',
-            [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
+            'created_at'
         ],
         include: [
             {
