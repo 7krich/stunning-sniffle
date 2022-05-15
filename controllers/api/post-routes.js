@@ -77,10 +77,10 @@ router.get('/:id', (req, res) => {
 
 // create a post
 router.post('/', withAuth, (req, res) => {
-    // expects {title: '', post_url: 'https://xx.com/press', user_id: 1}
+    // expects {title: '', post_content: 'https://xx.com/press', user_id: 1}
     Post.create({
         title: req.body.title,
-        post_url: req.body.post_url,
+        post_content: req.body.post_content,
         user_id: req.session.user_id
     })
     .then(dbPostData => res.json(dbPostData))
