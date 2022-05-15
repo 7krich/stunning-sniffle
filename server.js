@@ -1,18 +1,20 @@
-// make css file available to client
-const path = require('path');
 const express = require('express');
-const session = require('express-session');
 const routes = require('./controllers');
 // import connection from sequelize
 const sequelize = require('./config/connection');
+// make css file available to client
+const path = require('path');
 // set up handlebars.js
 const helpers = require('./utils/helpers');
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({ helpers });
 
+
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const sess = {
   secret: 'Super secret secret',
@@ -25,7 +27,6 @@ const sess = {
 };
 
 app.use(session(sess));
-// register hbs engine with the express app
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 app.use(express.json());
