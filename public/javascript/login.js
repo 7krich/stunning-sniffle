@@ -1,7 +1,7 @@
 async function signupFormHandler(event) {
     event.preventDefault();
 
-    const username = document.querySelector('#username-signup').ariaValueMax.trim();
+    const username = document.querySelector('#username-signup').value.trim();
     const email = document.querySelector('#email-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
 
@@ -18,7 +18,8 @@ async function signupFormHandler(event) {
 
         // check the response status
         if (response.ok) {
-            console.log('success');
+            alert('Logged in!');
+            document.location.replace('/dashboard');
         } else {
             alert(response.statusText)
         }
@@ -42,13 +43,13 @@ async function loginFormHandler(event) {
         });
   
         if (response.ok) {
-            document.location.replace('/');
+            alert('Account created!');
+            document.location.replace('/dashboard');
         } else {
             alert(response.statusText);
         };
     };
 };
   
-  document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
-
+document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
 document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
