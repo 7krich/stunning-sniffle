@@ -38,6 +38,5 @@ app.use(routes);
 
 // turn on connection to db and server
 // set force: true so tables re-creat/ false to turn off
-sequelize.sync({ force: false }).then(() => {
+
   app.listen(PORT, () => console.log('Now listening'));
-});
